@@ -1,0 +1,79 @@
+//***********************************
+//.cpp
+//Levi McCann
+//Lotter Winners Binary Search 8-3
+//CIS61 Hendrickson
+//04/06/2020
+//***********************************
+
+
+
+#include <iomanip>
+#include <string>
+#include <iostream>
+using namespace std;
+
+//constants
+const int NUM_ELEMENTS = 18; //for 18 numbers given in excesize
+//prototype function
+bool searchArray(int, int[NUM_ELEMENTS]);
+void selectionSort(int arr[NUM_ELEMENTS]);
+
+int main()
+ {
+    int account[] = {13579, 26791, 26792, 33445, 55555, 64283, 77777, 79422, 85647, 93121};
+    //variable for what user enters
+    int accNumber = 0; //what the user enters
+    bool found = true; // for if then statement
+
+    cout<<"Please enter account number: " <<endl;
+    cin>> accNumber ;  //get account 
+    //sort the array above for binary
+    selectionSort(account);
+
+    //calls if number is winner or not
+    if (found == searchArray(accNumber, account))
+    
+      cout<<"\nThe account "<<accNumber <<" number is valid account. " <<endl;
+    else  
+      cout<<"\nThe account "<<accNumber <<" number is NOT valid. " <<endl;
+    
+    
+
+
+return 0;
+
+}
+bool searchArray(int enteredValue, int lookupArray[NUM_ELEMENTS])
+{
+  bool found = false;  //not needed
+  for (int i =0; i<NUM_ELEMENTS;i++)
+  {
+    if (enteredValue == lookupArray[i])
+   return true;
+  }
+  return false;
+}
+
+//selection selectionSort
+void selectionSort(int arr[NUM_ELEMENTS])
+{
+  int minIndex =0;
+  for (int i = 0;i <NUM_ELEMENTS - 1; i++)
+  {
+      int minIndex = i;
+      int minValue = arr[i];
+      for (int c = i + 1; c < NUM_ELEMENTS; c ++)
+      {
+        if (arr[c] < minValue)
+        {
+          minValue =arr[c];
+          minIndex = c;
+        }
+      }
+      //swap values in array 
+      int temp = arr[i];
+      arr[i] = minValue;
+      arr[minIndex] = temp;
+  }
+}
