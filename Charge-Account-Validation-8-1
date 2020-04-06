@@ -1,0 +1,52 @@
+//*****************************************
+//.cpp
+//Levi McCann
+//Charge Account Validation 8-1
+//CIS61 Hendrickson
+//04/06/2020
+//******************************************
+
+
+
+#include <iomanip>
+#include <string>
+#include <iostream>
+using namespace std;
+
+//constants
+const int NUM_ELEMENTS = 18; //for 18 numbers given in excesize
+//prototype function
+bool searchArray(int, int[NUM_ELEMENTS]);
+
+int main()
+ {
+    int account[] = {5658845, 4520125, 7895122, 8777541,                      8451277, 1302850, 8080152, 456255,                       5552012, 5050552, 7825877, 1250255,                      1005231, 6545231, 3852085, 7576651,                      7881200, 4581002};
+    //variable for what user enters
+    int accNumber = 0; //what the user enters
+    bool found = true; // for if then statement
+
+    cout<<"Please enter account number: " <<endl;
+    cin>> accNumber ;  //get account number
+
+    if (found == searchArray(accNumber, account))
+    
+      cout<<"\nThe account "<<accNumber <<" number is valid account. " <<endl;
+    else  
+      cout<<"\nThe account "<<accNumber <<" number is NOT valid. " <<endl;
+    
+    
+
+
+return 0;
+
+}
+bool searchArray(int enteredValue, int lookupArray[NUM_ELEMENTS])
+{
+//  bool found = false;  //not needed
+  for (int i =0; i<NUM_ELEMENTS;i++)
+  {
+    if (enteredValue == lookupArray[i])
+    return true;
+  }
+  return false;
+}
