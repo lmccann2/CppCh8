@@ -1,0 +1,88 @@
+//***************************************
+//.cpp
+//Levi McCann
+//String Selection Sort 8-6
+//CIS61 Hendrickson
+//****************************************
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+//declare constant for number of names in array
+const int INT_NUM_NAMES = 20;
+
+//Prototype functions
+void sortNameArray(string[]);
+void displayNames(const string[]);
+void exitHold();
+
+int main()
+{
+    string strNames[INT_NUM_NAMES] = { "Collins, Bill", "Smith, Bart", "Allen, Jim",
+                                        "Griffin, Jim", "Stamey, Marty", "Rose, Geri",
+                                        "Taylor, Terri", "Johnson, Jill",
+                                        "Allison, Jeff", "Looney, Joe", "Wolfe, Bille",
+                                        "James, Jean", "Weaver, Jim", "Pore, Bob",
+                                        "Rutherford, Greg", "Javens, Renee",
+                                        "Harrison, Rose", "Setzer, Cathy",
+                                        "Pike, Gordon", "Holland, Beth" };
+    //call NameArray function
+    sortNameArray(strNames);
+    
+    //call displayNames
+    displayNames(strNames);
+    
+    //call exitHold
+    exitHold();
+    
+    return 0;
+}
+
+//sorts the names in the Array above
+void sortNameArray(string names[])
+{
+    int minIndex;
+    
+    string minValue;
+    string temp;
+    
+    //first(outer iteration) of sort
+    for (int start = 0; start < (INT_NUM_NAMES - 1); start++)
+    {
+        minIndex = start;
+        minValue = names[start];
+        //compare (inner iteration) of sort
+        for (int index = start + 1; index < INT_NUM_NAMES; index++)
+        {
+            if (names[index] < minValue)
+            {
+                minValue = names[index];
+                minIndex = index;
+            }
+        }
+        //swap the sting values in sort
+        temp = names[minIndex];
+        names[minIndex] = names[start];
+        names[start] = temp;
+    }
+}
+
+//display the names in the array
+void displayNames(const string names[])
+{
+    for (int i = 0; i < INT_NUM_NAMES; i++)
+    {
+        cout << names[i] << endl;
+    }
+}
+
+//Holds on exit at end of program
+void exitHold()
+{
+    string strExit;
+    
+    cout << "Enter any key to exit:\n";
+    cin >> strExit;
+}
